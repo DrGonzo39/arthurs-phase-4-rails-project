@@ -21,6 +21,7 @@ function SignUpForm({ onLogin }) {
       }),
     })
       .then((r) => {
+        //needed? 
         if (r.ok) {
             r.json().then((user) => onLogin(user))
         } else {
