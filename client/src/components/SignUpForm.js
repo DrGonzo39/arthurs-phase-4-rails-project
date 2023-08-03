@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function SignUpForm({ onLogin }) {
+function SignUpForm({ onSignUp }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -23,7 +23,7 @@ function SignUpForm({ onLogin }) {
       .then((r) => {
         //needed? 
         if (r.ok) {
-            r.json().then((user) => onLogin(user))
+            r.json().then((user) => onSignUp(user))
         } else {
             r.json().then((error) => setErrors(error.errors))
         }
