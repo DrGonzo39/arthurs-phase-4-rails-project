@@ -1,13 +1,15 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import SignUpForm from './SignUpForm';
+import Home from './Home';
 import { UserProvider } from '../context/user';
 
 function App() {
   return (
     <div className="App">
      <UserProvider>
-      <SignUpForm />
+      <Routes>
+        <Route exact path="/" element={<Home/>} />
+      </Routes>
      </UserProvider>
     </div>
   );

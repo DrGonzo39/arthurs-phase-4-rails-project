@@ -20,14 +20,8 @@ function SignUpForm({ onSignUp }) {
         password_confirmation: passwordConfirmation,
       }),
     })
-      .then((r) => {
-        //needed? 
-        if (r.ok) {
-            r.json().then((user) => onSignUp(user))
-        } else {
-            r.json().then((error) => setErrors(error.errors))
-        }
-      });
+      .then((r) => r.json())
+      .then((user) => onSignUp(user))
   }
 
   return (
