@@ -11,8 +11,20 @@ function UserProvider({ children }) {
         .then((data) => setUser(data))
     }, [])
 
+    function onLogin() {
+
+    }
+
+    function onSignUp() {
+
+    }
+
+    function onLogout () {
+
+    }
+
     return(
-        <UserContext.Provider value={{ user }}>
+        <UserContext.Provider value={{ user, onLogin, onSignUp, onLogout }}>
             {children}
         </UserContext.Provider>
     );
