@@ -15,8 +15,8 @@ function UserProvider({ children }) {
 
     }
 
-    function onSignUp() {
-
+    function onSignUp(user) {
+        setUser(user)
     }
 
     function onLogout () {

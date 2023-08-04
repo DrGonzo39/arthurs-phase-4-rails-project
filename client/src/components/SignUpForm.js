@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../context/user';
+
 
 function SignUpForm({ onSignUp }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState([])
+  const { onSignUp } = useContext(UserContext);
   
-
+  // need error handling?
   function handleSubmit(e) {
     e.preventDefault();
     fetch("/signup", {
@@ -14,13 +18,17 @@ function SignUpForm({ onSignUp }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
-        password,
+        username: username,
+        password: password,
         password_confirmation: passwordConfirmation,
       }),
-    })
-      .then((r) => r.json())
-      .then((user) => onSignUp(user))
+    }).then((r) => {
+        if (r.ok) {
+          r.json().then((user) => onSignUp(user));
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }
+      })
   }
 
   return (
@@ -47,6 +55,9 @@ function SignUpForm({ onSignUp }) {
         onChange={(e) => setPasswordConfirmation(e.target.value)}
       />
       <button type="submit">Submit</button>
+      {errors.map((err) => (
+        <h2 key={err}>{err}</h2>
+      ))}
     </form>
     );
 }
