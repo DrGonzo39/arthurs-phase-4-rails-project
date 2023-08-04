@@ -12,7 +12,7 @@ function UserProvider({ children }) {
     }, [])
 
     function onLogin() {
-
+        setUser(user)
     }
 
     function onSignUp(user) {
@@ -20,7 +20,7 @@ function UserProvider({ children }) {
     }
 
     function onLogout () {
-
+        setUser(null)
     }
 
     return(

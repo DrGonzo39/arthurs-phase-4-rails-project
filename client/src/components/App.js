@@ -4,11 +4,13 @@ import Home from './Home';
 import { UserProvider } from '../context/user';
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
+import NavBar from './NavBar';
 
 function App() {
   return (
     <div className="App">
      <UserProvider>
+      <NavBar/>
       <Routes>
         <Route exact path="/" element={<Home/>} />
         <Route exact path="/signup" element={<SignUpForm/>} />
