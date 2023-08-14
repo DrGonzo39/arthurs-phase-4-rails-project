@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './Home';
-import { UserProvider } from '../context/user';
-import SignUpForm from './SignUpForm';
-import LoginForm from './LoginForm';
-import NavBar from './NavBar';
+import Home from './components/Home';
+import { UserProvider } from './context/user';
+import SignUpForm from './components/SignUpForm';
+import LoginForm from './components/LoginForm';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
