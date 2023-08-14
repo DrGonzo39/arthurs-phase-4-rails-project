@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2023_08_10_164816) do
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
+    t.string "title"
     t.string "artist"
     t.string "genre"
     t.string "tracks"
