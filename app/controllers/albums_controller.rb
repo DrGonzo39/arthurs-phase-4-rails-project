@@ -5,6 +5,10 @@ class AlbumsController < ApplicationController
         render json: albums
     end
 
+    def show
+        
+    end
+
     def create
         album = Album.create!(album_params)
         render json: album, status: :created 
