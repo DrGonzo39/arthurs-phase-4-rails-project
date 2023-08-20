@@ -18,6 +18,9 @@ function NavBar() {
             <h1>Hello {user.username}</h1>
             <br/>
             <button onClick={logout}>Logout</button>
+            <NavLink to="/">
+                Home 
+            </NavLink>
             </>
         )
     }else{
@@ -25,6 +28,9 @@ function NavBar() {
             <>
             <NavLink to="/login">
                 Login
+            </NavLink>
+            <NavLink to="/signup">
+                Sign up 
             </NavLink>
             </>
         )

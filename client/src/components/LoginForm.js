@@ -5,7 +5,7 @@ import { UserContext } from "../context/user";
 function LoginForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
     const { onLogin } = useContext(UserContext);
   
     function handleSubmit(e) {
@@ -20,11 +20,14 @@ function LoginForm() {
           password: password
          }),
       }).then((r) => {
-        if (r.ok) {
-          r.json().then((user) => onLogin(user));
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }
+        r.json().then((user) => onLogin(user));
+        setUsername("")
+        setPassword("") 
+        // if (r.ok) {
+        //   r.json().then((user) => onLogin(user));
+        // } else {
+        //   r.json().then((err) => setErrors(err.errors));
+        // }
     })
   }
   
@@ -41,9 +44,11 @@ function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
+        {/* <ul>
         {errors.map((err) => (
-        <h2 key={err}>{err}</h2>
+        <li key={err}>{err}</li>
         ))}
+        </ul>  */}
       </form>
     );
 }

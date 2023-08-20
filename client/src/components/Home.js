@@ -8,7 +8,12 @@ function Home() {
         return (<h3>Please login or signup</h3>)
     }else{
         return (
-            <h3>{user.username}'s Homepage</h3>
+            <>
+            <h3>My albums</h3>
+            {/* {user.albums.map((album) => {
+                <li>{album.title}</li>
+            })} */}
+            </>
         )
     }
 };

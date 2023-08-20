@@ -6,7 +6,7 @@ function SignUpForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [errors, setErrors] = useState([])
+  // const [errors, setErrors] = useState([])
   const { onSignUp } = useContext(UserContext);
   
   // need error handling?
@@ -23,11 +23,15 @@ function SignUpForm() {
         password_confirmation: passwordConfirmation,
       }),
     }).then((r) => {
-        if (r.ok) {
-          r.json().then((user) => onSignUp(user));
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }
+      r.json().then((user) => onSignUp(user));
+      setUsername("")
+      setPassword("")
+      setPasswordConfirmation("")
+        // if (r.ok) {
+        //   r.json().then((user) => onSignUp(user));
+        // } else {
+        //   r.json().then((err) => setErrors(err.errors));
+        // }
       })
   }
 
@@ -55,9 +59,9 @@ function SignUpForm() {
         onChange={(e) => setPasswordConfirmation(e.target.value)}
       />
       <button type="submit">Submit</button>
-      {errors.map((err) => (
+      {/* {errors.map((err) => (
         <h2 key={err}>{err}</h2>
-      ))}
+      ))} */}
     </form>
     );
 }
