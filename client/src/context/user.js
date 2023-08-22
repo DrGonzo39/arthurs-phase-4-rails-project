@@ -4,7 +4,7 @@ const UserContext = React.createContext();
 
 function UserProvider({ children }) {
     const [user, setUser] = useState(null)
-    const [isLoggedin, setIsLoggedIn] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     //auto-login and onLogin can go here
     useEffect(() => {
         fetch("/me")
@@ -31,7 +31,7 @@ function UserProvider({ children }) {
     }
 
     return(
-        <UserContext.Provider value={{ user, onLogin, onSignUp, onLogout, isLoggedin }}>
+        <UserContext.Provider value={{ user, onLogin, onSignUp, onLogout, isLoggedIn }}>
             {children}
         </UserContext.Provider>
     );

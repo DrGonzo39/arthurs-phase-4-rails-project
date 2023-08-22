@@ -20,14 +20,13 @@ function LoginForm() {
           password: password
          }),
       }).then((r) => {
-        r.json().then((user) => onLogin(user));
         setUsername("")
         setPassword("") 
-        // if (r.ok) {
-        //   r.json().then((user) => onLogin(user));
-        // } else {
-        //   r.json().then((err) => setErrors(err.errors));
-        // }
+        if (r.ok) {
+          r.json().then((user) => onLogin(user));
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }
     })
   }
   
@@ -44,11 +43,11 @@ function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
-        {/* <ul>
+        <ul>
         {errors.map((err) => (
         <li key={err}>{err}</li>
         ))}
-        </ul>  */}
+        </ul> 
       </form>
     );
 }

@@ -6,10 +6,9 @@ function SignUpForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  // const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([])
   const { onSignUp } = useContext(UserContext);
   
-  // need error handling?
   function handleSubmit(e) {
     e.preventDefault();
     fetch("/signup", {
@@ -23,15 +22,14 @@ function SignUpForm() {
         password_confirmation: passwordConfirmation,
       }),
     }).then((r) => {
-      r.json().then((user) => onSignUp(user));
       setUsername("")
       setPassword("")
       setPasswordConfirmation("")
-        // if (r.ok) {
-        //   r.json().then((user) => onSignUp(user));
-        // } else {
-        //   r.json().then((err) => setErrors(err.errors));
-        // }
+        if (r.ok) {
+          r.json().then((user) => onSignUp(user));
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }
       })
   }
 
@@ -59,9 +57,9 @@ function SignUpForm() {
         onChange={(e) => setPasswordConfirmation(e.target.value)}
       />
       <button type="submit">Submit</button>
-      {/* {errors.map((err) => (
-        <h2 key={err}>{err}</h2>
-      ))} */}
+      <ul>{errors.map((err) => {
+        <li key={err}>{err}</li>
+      })}</ul>
     </form>
     );
 }

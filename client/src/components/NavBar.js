@@ -3,7 +3,7 @@ import { UserContext } from '../context/user'
 import { NavLink } from 'react-router-dom'
 
 function NavBar() {
-    const {user, onLogout} = useContext(UserContext)
+    const {user, isLoggedIn, onLogout} = useContext(UserContext)
 
     function logout() {
         fetch("/logout")
@@ -12,7 +12,7 @@ function NavBar() {
         })
     }
 
-    if (user) {
+    if (isLoggedIn) {
         return (
             <>
             <h1>{`Hello ${user.username}`}</h1>

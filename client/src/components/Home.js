@@ -2,15 +2,16 @@ import { useContext } from 'react';
 import { UserContext } from '../context/user';
 
 function Home() {
-    const { user } = useContext(UserContext)
+    const { user, isLoggedIn } = useContext(UserContext)
 
-    if (user) { 
+    if (isLoggedIn) { 
         return (
             <>
-            <h3>My albums</h3>
-            {/* {user.albums.map((album) => {
-                <li>{album.title}</li>
-            })} */}
+            <h1>My albums</h1>
+            <ul>
+            {user.albums.map((album) => {<li>{album.title}</li>}
+            )}
+            </ul>
             </>
         )
     }else{
