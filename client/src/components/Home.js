@@ -9,8 +9,11 @@ function Home() {
             <>
             <h1>My albums</h1>
             <ul>
-            {user.albums.map((album) => {<li>{album.title}</li>}
-            )}
+            {user.albums.map((album) => {
+                return (
+            <li>{album.title}</li>
+                )
+                })}
             </ul>
             </>
         )

@@ -5,7 +5,7 @@ import { UserContext } from "../context/user";
 function LoginForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    // const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState([]);
     const { onLogin } = useContext(UserContext);
   
     function handleSubmit(e) {

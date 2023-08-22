@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2023_08_10_164816) do
     t.string "artist"
     t.string "genre"
     t.string "tracks"
+    t.string "cover_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
