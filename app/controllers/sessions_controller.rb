@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    # maybe don't skip the action, that might be causing useEffect to start a session with an empty user?
     skip_before_action :authorize, only: :create
 
     def create 

@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2023_08_10_164816) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "albums", force: :cascade do |t|
     t.string "title"
     t.string "artist"
@@ -25,8 +22,8 @@ ActiveRecord::Schema.define(version: 2023_08_10_164816) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "album_id", null: false
+    t.integer "user_id", null: false
+    t.integer "album_id", null: false
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -15,7 +15,7 @@ function NavBar() {
     if (user) {
         return (
             <>
-            <h1>Hello {user.username}</h1>
+            <h1>{`Hello ${user.username}`}</h1>
             <br/>
             <button onClick={logout}>Logout</button>
             <NavLink to="/">
