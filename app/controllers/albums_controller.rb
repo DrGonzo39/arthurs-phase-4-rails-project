@@ -11,14 +11,14 @@ class AlbumsController < ApplicationController
     end
 
     def create
-        album = Album.create!(album_params)
+        album = @current_user.albums.create!(album_params)
         render json: album, status: :created 
     end
 
     private 
 
     def album_params
-        params.permit(:title, :artist, :genre, :tracks)
+        params.permit(:title, :artist, :genre, :tracks, :cover_image)
     end
 
 end

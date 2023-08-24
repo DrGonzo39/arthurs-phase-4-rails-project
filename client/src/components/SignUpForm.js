@@ -57,9 +57,9 @@ function SignUpForm() {
         onChange={(e) => setPasswordConfirmation(e.target.value)}
       />
       <button type="submit">Submit</button>
-      <ul>{errors.map((err) => {
+      <ul>{errors.map((err) => (
         <li key={err}>{err}</li>
-      })}</ul>
+      ))}</ul>
     </form>
     );
 }

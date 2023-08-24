@@ -10,28 +10,38 @@ function UserProvider({ children }) {
         fetch("/me")
         .then((r) => r.json())
         .then((data) => { 
-            setUser(data)
-            data.error ? setIsLoggedIn(false) : setIsLoggedIn(true) 
+            if (data.errors) {
+                console.log(data.errors)
+            }else{
+                setUser(data)
+                setIsLoggedIn(true)
+            }
         })
     }, [])
+    console.log(user)
+    console.log(isLoggedIn)
 
     function onLogin() {
-        setUser(user)
         setIsLoggedIn(true)
+        setUser(user)
     }
 
     function onSignUp(user) {
-        setUser(user)
         setIsLoggedIn(true)
+        setUser(user)
     }
 
-    function onLogout () {
-        setUser({})
+    function onLogout() {
         setIsLoggedIn(false)
+        setUser({})
+    }
+
+    function onAddAlbum(newAlbum) {
+        setUser([...user.albums, newAlbum])
     }
 
     return(
-        <UserContext.Provider value={{ user, onLogin, onSignUp, onLogout, isLoggedIn }}>
+        <UserContext.Provider value={{ user, onLogin, onSignUp, onLogout, onAddAlbum, isLoggedIn  }}>
             {children}
         </UserContext.Provider>
     );

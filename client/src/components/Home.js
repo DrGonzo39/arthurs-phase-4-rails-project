@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { UserContext } from '../context/user';
+import NewAlbumForm from './NewAlbumForm';
 
 function Home() {
     const { user, isLoggedIn } = useContext(UserContext)
@@ -9,12 +10,11 @@ function Home() {
             <>
             <h1>My albums</h1>
             <ul>
-            {user.albums.map((album) => {
-                return (
-            <li>{album.title}</li>
-                )
-                })}
+            {user.albums.map((album) => (
+                <li key={album.id}>{album.title}</li>
+            ))}
             </ul>
+            <NewAlbumForm />
             </>
         )
     }else{
