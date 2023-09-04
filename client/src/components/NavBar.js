@@ -25,6 +25,9 @@ function NavBar() {
             <NavLink to="/">
                 Home 
             </NavLink>
+            <NavLink to="/albums">
+                All Albums 
+            </NavLink>
             </>
         )
     }else{
