@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ReviewCard({ review }) {
+function ReviewCard({ review, onUpdateReview }) {
     const [content, setContent] = useState(review.content)
 
     function handleSubmit(id){
@@ -14,7 +14,7 @@ function ReviewCard({ review }) {
             }),
         })
         .then((r) => r.json())
-        .then((updatedReview) => setContent(updatedReview))
+        .then((updatedReview) => onUpdateReview(updatedReview))
     }
 
     function handleDeleteClick(id) {

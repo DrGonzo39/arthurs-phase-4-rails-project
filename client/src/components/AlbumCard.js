@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import ReviewCard from "./ReviewCard";
 
-function AlbumCard({ album }) {
+function AlbumCard({ album, onUpdateReview, onAddReview  }) {
     const [content, setContent] = useState("")
-    const [reviews, setReviews ] = useState(album.reviews)
+    // const [reviews, setReviews ] = useState(album.reviews)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -17,7 +17,7 @@ function AlbumCard({ album }) {
           }),
         })
         .then((r) => r.json())
-        .then((newReview) => setReviews(...reviews, newReview))
+        .then((newReview) => onAddReview(newReview))
         
     }
 
@@ -39,7 +39,7 @@ function AlbumCard({ album }) {
         </form>
         <h2>
             {reviews.map((review) => {
-                <ReviewCard key={review.id} review={review}/>
+                <ReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview}/>
             })}
         </h2>
         </>
