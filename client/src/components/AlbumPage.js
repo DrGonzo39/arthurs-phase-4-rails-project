@@ -28,6 +28,13 @@ function AlbumPage() {
         handleUpdateAlbum(updatedAlbumReviews);
     }
 
+    function handleDeleteReview(review){
+        const albumToUpdate = albums.find((album) => album.id === review.album_id)
+        const updatedReviews = albumToUpdate.reviews.filter((deletedBike) => deletedBike.id !== review.id)
+        albumToUpdate.reviews = updatedReviews
+        handleUpdateAlbum(albumToUpdate)
+    }
+
     function handleUpdateAlbum(updatedAlbum) {
         const updatedAlbums = albums.map((album) => {
             if(album.id === updatedAlbum.id){
@@ -43,7 +50,7 @@ function AlbumPage() {
     return (
         <>
         {albums.map((album) => {
-            <AlbumCard key={album} album={album} onUpdateReview={handleUpdateReview} onAddReview={handleAddReview} />
+            <AlbumCard key={album} album={album} onUpdateReview={handleUpdateReview} onAddReview={handleAddReview} onDeleteReview={handleDeleteReview} />
         })}
         </>
     )

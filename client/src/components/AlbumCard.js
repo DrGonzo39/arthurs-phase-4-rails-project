@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import ReviewCard from "./ReviewCard";
 
-function AlbumCard({ album, onUpdateReview, onAddReview  }) {
+function AlbumCard({ album, onUpdateReview, onAddReview, onDeleteReview  }) {
     const [content, setContent] = useState("")
-    // const [reviews, setReviews ] = useState(album.reviews)
+    const [errors, setErrors] = useState([])
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -15,10 +15,13 @@ function AlbumCard({ album, onUpdateReview, onAddReview  }) {
           body: JSON.stringify({
             content: content
           }),
+        }).then((r) => {
+            if(r.ok){
+                r.json().then((newReview) => onAddReview(newReview))
+            }else{
+                r.json().then((err) => setErrors(err.errors))
+            }
         })
-        .then((r) => r.json())
-        .then((newReview) => onAddReview(newReview))
-        
     }
 
     return (
@@ -39,9 +42,14 @@ function AlbumCard({ album, onUpdateReview, onAddReview  }) {
         </form>
         <h2>
             {reviews.map((review) => {
-                <ReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview}/>
+                <ReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview}/>
             })}
         </h2>
+        <ul>
+        {errors.map((err) => (
+        <li key={err}>{err}</li>
+        ))}
+        </ul> 
         </>
     )
 }

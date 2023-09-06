@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-function ReviewCard({ review, onUpdateReview }) {
+function ReviewCard({ review, onUpdateReview, onDeleteReview }) {
     const [content, setContent] = useState(review.content)
+    const [errors, setErrors] = useState([])
 
     function handleSubmit(id){
         fetch(`/reviews/${id}`, {
@@ -12,15 +13,20 @@ function ReviewCard({ review, onUpdateReview }) {
             body: JSON.stringify({
                 content: content
             }),
+        }).then((r) => {
+            if(r.ok) {
+                r.json().then((updatedReview) => onUpdateReview(updatedReview))
+            }else{
+                r.json().then((err) => setErrors(err.errors))
+            }
         })
-        .then((r) => r.json())
-        .then((updatedReview) => onUpdateReview(updatedReview))
     }
 
-    function handleDeleteClick(id) {
-        fetch(`/reviews/${id}`, {
+    function handleDeleteClick(review) {
+        fetch(`/reviews/${review.id}`, {
             method: "DELETE"
-        })
+        });
+        onDeleteReview(review)
     }
 
     return (
@@ -35,6 +41,11 @@ function ReviewCard({ review, onUpdateReview }) {
             <button type="submit">Edit This Review</button>
             </form>
             <button onClick={handleDeleteClick}>Delete this review</button>
+            <ul>
+            {errors.map((err) => (
+            <li key={err}>{err}</li>
+            ))}
+            </ul> 
         </>
     )
 }
