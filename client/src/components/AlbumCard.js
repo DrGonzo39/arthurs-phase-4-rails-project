@@ -41,8 +41,8 @@ function AlbumCard({ album, onUpdateReview, onAddReview, onDeleteReview  }) {
         <button type="submit">Submit Your Review!</button>
         </form>
         <h2>
-            {reviews.map((review) => {
-                <ReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview}/>
+            {album.reviews.map((review) => {
+              return <ReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview}/>
             })}
         </h2>
         <ul>

@@ -8,7 +8,7 @@ function AlbumPage() {
         fetch("/albums")
         .then((r) => r.json())
         .then((data) => setAlbums(data))
-    }, [])
+    },[])
 
     function handleAddReview(newReview){
         const albumToUpdate = albums.find((album) => album.id === newReview.album_id)
@@ -50,7 +50,7 @@ function AlbumPage() {
     return (
         <>
         {albums.map((album) => {
-            <AlbumCard key={album} album={album} onUpdateReview={handleUpdateReview} onAddReview={handleAddReview} onDeleteReview={handleDeleteReview} />
+           return <AlbumCard key={album.id} album={album} onUpdateReview={handleUpdateReview} onAddReview={handleAddReview} onDeleteReview={handleDeleteReview} />
         })}
         </>
     )
