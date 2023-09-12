@@ -1,12 +1,13 @@
-class ReviewsController < ApplicationController
-    
+class ReviewsController < ApplicationController 
+
     def show
         review = Review.find_by(id: params[:id])
         render json: review
     end
 
     def create
-        review = Review.create!(review_params)
+        
+        review = @current_user.reviews.create!(review_params)
         render json: review, status: :created 
     end
 
@@ -25,7 +26,7 @@ class ReviewsController < ApplicationController
     private
 
     def review_params
-        params.permit(:content)
+        params.permit(:content, :album_id)
     end
 
 end

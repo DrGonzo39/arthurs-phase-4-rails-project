@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AlbumCard from "./AlbumCard";
+import NewAlbumForm from "./NewAlbumForm";
 
 function AlbumPage() {
     const [albums, setAlbums] = useState([])
@@ -9,6 +10,10 @@ function AlbumPage() {
         .then((r) => r.json())
         .then((data) => setAlbums(data))
     },[])
+
+    function handleAddAlbum(newAlbum) {
+        setAlbums([...albums, newAlbum])
+    }
 
     function handleAddReview(newReview){
         const albumToUpdate = albums.find((album) => album.id === newReview.album_id)
@@ -49,6 +54,7 @@ function AlbumPage() {
 
     return (
         <>
+        <NewAlbumForm onAddAlbum={handleAddAlbum}/>
         {albums.map((album) => {
            return <AlbumCard key={album.id} album={album} onUpdateReview={handleUpdateReview} onAddReview={handleAddReview} onDeleteReview={handleDeleteReview} />
         })}

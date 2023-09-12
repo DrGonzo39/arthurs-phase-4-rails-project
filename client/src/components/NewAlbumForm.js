@@ -1,14 +1,13 @@
-import React, { useState, useContext } from 'react';
-import { UserContext } from '../context/user';
+import React, { useState } from 'react';
 
-function NewAlbumForm() {
+
+function NewAlbumForm({ onAddAlbum }) {
     const [title, setTitle] = useState("");
     const [artist, setArtist] = useState("");
     const [genre, setGenre] = useState("");
     const [tracks, setTracks] = useState("");
     const [coverImage, setCoverImage] = useState("");
     const [errors, setErrors] = useState([])
-    const { onAddAlbum } = useContext(UserContext);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -25,11 +24,12 @@ function NewAlbumForm() {
             cover_image: coverImage
           }),
         }).then((r) => {
-          setTitle("")
-          setArtist("")
-          setGenre("")
             if (r.ok) {
               r.json().then((newAlbum) => onAddAlbum(newAlbum));
+              setTitle("")
+              setArtist("")
+              setGenre("")
+              setTracks("")
             } else {
               r.json().then((err) => setErrors(err.errors));
             }

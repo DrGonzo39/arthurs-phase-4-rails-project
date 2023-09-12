@@ -13,6 +13,7 @@ function AlbumCard({ album, onUpdateReview, onAddReview, onDeleteReview  }) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            album_id: album.id,
             content: content
           }),
         }).then((r) => {
