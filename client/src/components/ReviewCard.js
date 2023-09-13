@@ -4,8 +4,9 @@ function ReviewCard({ review, onUpdateReview, onDeleteReview }) {
     const [content, setContent] = useState(review.content)
     const [errors, setErrors] = useState([])
 
-    function handleSubmit(id){
-        fetch(`/reviews/${id}`, {
+    function handleSubmit(e){
+        e.preventDefault();
+        fetch(`/reviews/${review.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -26,7 +27,7 @@ function ReviewCard({ review, onUpdateReview, onDeleteReview }) {
         fetch(`/reviews/${review.id}`, {
             method: "DELETE"
         });
-        onDeleteReview(review)
+        onDeleteReview(review);
     }
 
     return (

@@ -23,7 +23,7 @@ function AlbumPage() {
 
     function handleUpdateReview(updatedReview) {
         const albumToUpdate = albums.find((album) => album.id === updatedReview.album_id)
-        const updatedAlbumReviews = albumToUpdate.reviews.map((review) => {
+        const updatedAlbumReviews = albumToUpdate.reviews.filter((review) => {
             if (review.id === updatedReview.id) {
                 return updatedReview
             }else{
@@ -35,8 +35,8 @@ function AlbumPage() {
 
     function handleDeleteReview(review){
         const albumToUpdate = albums.find((album) => album.id === review.album_id)
-        const updatedReviews = albumToUpdate.reviews.filter((deletedBike) => deletedBike.id !== review.id)
-        albumToUpdate.reviews = updatedReviews
+        const updatedReviews = albumToUpdate.reviews.filter((deletedReview) => deletedReview.id !== review.id)
+        albumToUpdate.reviews = updatedReviews;
         handleUpdateAlbum(albumToUpdate)
     }
 
