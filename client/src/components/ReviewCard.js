@@ -23,7 +23,7 @@ function ReviewCard({ review, onUpdateReview, onDeleteReview }) {
         })
     }
 
-    function handleDeleteClick(review) {
+    function handleDeleteClick() {
         fetch(`/reviews/${review.id}`, {
             method: "DELETE"
         });
