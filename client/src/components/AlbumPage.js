@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../context/user";
 import AlbumCard from "./AlbumCard";
 import NewAlbumForm from "./NewAlbumForm";
 
@@ -17,8 +18,11 @@ function AlbumPage() {
 
     function handleAddReview(newReview){
         const albumToUpdate = albums.find((album) => album.id === newReview.album_id)
-        const updatedAlbum = [...albumToUpdate.reviews, newReview]
+        const updatedAlbumReviews = [...albumToUpdate.reviews, newReview]
+        // make a copy of albumToUpdate and make sure the the review array is the updatedReveiws 
+        const updatedAlbum = {...albumToUpdate, reviews: updatedAlbumReviews}
         handleUpdateAlbum(updatedAlbum)
+        // update user state as well!
     }
 
     function handleUpdateReview(updatedReview) {

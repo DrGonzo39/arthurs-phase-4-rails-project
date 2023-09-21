@@ -40,38 +40,38 @@ function NewAlbumForm({ onAddAlbum }) {
         <>
         <h1>Add an Album to your Collection</h1>
         <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Title:</label>
+            <label htmlFor="title">Title:</label>
             <input
                 type="text"
-                id="username"
+                id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
-            <label htmlFor="username">Artist:</label>
+            <label htmlFor="artist">Artist:</label>
             <input
                 type="text"
-                id="username"
+                id="artist"
                 value={artist}
                 onChange={(e) => setArtist(e.target.value)}
             />
-            <label htmlFor="username">Genre:</label>
+            <label htmlFor="genre">Genre:</label>
             <input
                 type="text"
-                id="username"
+                id="genre"
                 value={genre}
                 onChange={(e) => setGenre(e.target.value)}
             />
-            <label htmlFor="username">Tracks:</label>
+            <label htmlFor="tracks">Tracks:</label>
             <input
                 type="text"
-                id="username"
+                id="tracks"
                 value={tracks}
                 onChange={(e) => setTracks(e.target.value)}
             />
-            <label htmlFor="username">Cover Image:</label>
+            <label htmlFor="cover_image">Cover Image:</label>
             <input
                 type="text"
-                id="username"
+                id="cover_image"
                 value={coverImage}
                 onChange={(e) => setCoverImage(e.target.value)}
             />

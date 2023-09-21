@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController 
-
+    skip_before_action :authorize, only: :show
     def show
         review = Review.find_by(id: params[:id])
         render json: review

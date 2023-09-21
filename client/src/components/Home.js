@@ -8,12 +8,12 @@ function Home() {
     if (isLoggedIn) { 
         return (
             <>
-            <h1>My albums</h1>
-            <ul>
+            <h1>My Reviewed Albums</h1>
+            <h2>
             {user.albums.map((album) => (
-                <li key={album.id}>{album.title}</li>
+                <p key={album.id}>{album.title}</p>
             ))}
-            </ul>
+            </h2>
             </>
         )
     }else{
