@@ -36,12 +36,8 @@ function UserProvider({ children }) {
         setUser({})
     }
 
-    function onAddAlbum(newAlbum) {
-        setUser([...user.albums, newAlbum])
-    }
-
     return(
-        <UserContext.Provider value={{ user, onLogin, onSignUp, onLogout, onAddAlbum, isLoggedIn  }}>
+        <UserContext.Provider value={{ user, setUser, onLogin, onSignUp, onLogout, isLoggedIn  }}>
             {children}
         </UserContext.Provider>
     );

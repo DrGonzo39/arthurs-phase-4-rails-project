@@ -5,6 +5,7 @@ import NewAlbumForm from "./NewAlbumForm";
 
 function AlbumPage() {
     const [albums, setAlbums] = useState([])
+    const { user, setUser } = useContext(UserContext)
 
     useEffect(() => {
         fetch("/albums")
@@ -23,6 +24,8 @@ function AlbumPage() {
         const updatedAlbum = {...albumToUpdate, reviews: updatedAlbumReviews}
         handleUpdateAlbum(updatedAlbum)
         // update user state as well!
+       setUser([...user.albums, updatedAlbum])
+       debugger
     }
 
     function handleUpdateReview(updatedReview) {
