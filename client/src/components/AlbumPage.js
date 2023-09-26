@@ -19,13 +19,14 @@ function AlbumPage() {
 
     function handleAddReview(newReview){
         const albumToUpdate = albums.find((album) => album.id === newReview.album_id)
-        const updatedAlbumReviews = [...albumToUpdate.reviews, newReview]
-        // make a copy of albumToUpdate and make sure the the review array is the updatedReveiws 
+        const updatedAlbumReviews = [...albumToUpdate.reviews, newReview] 
         const updatedAlbum = {...albumToUpdate, reviews: updatedAlbumReviews}
         handleUpdateAlbum(updatedAlbum)
-        // update user state as well!
-       setUser([...user.albums, updatedAlbum])
-       debugger
+       setUser((prevState) => ({
+        ...prevState, 
+        albums: [...user.albums, updatedAlbum],
+        reviews: [...user.reviews, newReview]
+       }))
     }
 
     function handleUpdateReview(updatedReview) {
@@ -45,6 +46,21 @@ function AlbumPage() {
         const updatedReviews = albumToUpdate.reviews.filter((deletedReview) => deletedReview.id !== review.id)
         albumToUpdate.reviews = updatedReviews;
         handleUpdateAlbum(albumToUpdate)
+        const reviewToUpdateIndex = albums.findIndex((album) => album.id === review.album_id)
+        albums[reviewToUpdateIndex].reviews = updatedReviews;
+
+        setUser((prevState) => ({
+            ...prevState,
+            albums: albums
+        }))
+        // const usersAlbum = [...user.albums]
+        // usersAlbum.splice(reviewToUpdateIndex, 1, albumToUpdate)
+        // console.log(usersAlbum)
+        // console.log(reviewToUpdateIndex)
+        // setUser((prevState) => ({
+        //     ...prevState,
+        //     albums: usersAlbum
+        // }))
     }
 
     function handleUpdateAlbum(updatedAlbum) {

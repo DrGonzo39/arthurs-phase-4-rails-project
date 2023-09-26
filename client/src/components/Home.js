@@ -5,6 +5,8 @@ import { UserContext } from '../context/user';
 function Home() {
     const { user, isLoggedIn } = useContext(UserContext)
 
+
+
     if (isLoggedIn) { 
         return (
             <>
