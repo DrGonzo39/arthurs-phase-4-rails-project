@@ -21,7 +21,7 @@ function UserProvider({ children }) {
     console.log(user)
     console.log(isLoggedIn)
 
-    function onLogin() {
+    function onLogin(user) {
         setIsLoggedIn(true)
         setUser(user)
     }
