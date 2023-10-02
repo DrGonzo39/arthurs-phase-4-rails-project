@@ -11,7 +11,18 @@
   -In my routes file, I have full CRUD for reviews, and read and create for albums
   -User-wise, I have a route that creates a user, and I used the '/me' for the auto-login function on the front-end
   -The routes going to the sessions controller are the user login/logout functions
+  -I used serializers to organize my json data for the frontend
+  -I chose to do Error handling code and user-authorization code in application controller so I didn't have to repeat code in each controller
+    authorizations in each controller are done via my @current_user variable and the associated authorize function
 
+#React Front-end
+
+  -All routes and API calls on the front end are routed to the corresponding back end controller actions
+  -I implemeted my user object and state throughout the app via the useContext hook as required
+  -Font-end nested state is all updated in the correct fashion
+  -One aspect of note; there is a seperate albums state connected to album page, this is on purpose since I want all albums in the database to 
+    render regardless of which user is logged in, that way a user can review any of them! 
+    -both states are updated appropriately 
 
 
 
