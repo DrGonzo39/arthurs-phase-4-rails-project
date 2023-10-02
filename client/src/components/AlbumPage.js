@@ -39,6 +39,10 @@ function AlbumPage() {
             }
         });
         handleUpdateAlbum(updatedAlbumReviews);
+        setUser((prevState) => ({
+            ...prevState,
+            reviews: updatedAlbumReviews
+        }))
     }
 
     function handleDeleteReview(review){
@@ -53,14 +57,6 @@ function AlbumPage() {
             ...prevState,
             albums: albums
         }))
-        // const usersAlbum = [...user.albums]
-        // usersAlbum.splice(reviewToUpdateIndex, 1, albumToUpdate)
-        // console.log(usersAlbum)
-        // console.log(reviewToUpdateIndex)
-        // setUser((prevState) => ({
-        //     ...prevState,
-        //     albums: usersAlbum
-        // }))
     }
 
     function handleUpdateAlbum(updatedAlbum) {

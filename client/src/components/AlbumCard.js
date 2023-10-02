@@ -17,6 +17,7 @@ function AlbumCard({ album, onUpdateReview, onAddReview, onDeleteReview  }) {
             content: content
           }),
         }).then((r) => {
+          setContent("")
             if(r.ok){
                 r.json().then((newReview) => onAddReview(newReview))
             }else{
