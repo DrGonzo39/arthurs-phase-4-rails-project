@@ -18,9 +18,7 @@ function UserProvider({ children }) {
             }
         })
     }, [])
-    console.log(user)
-    console.log(isLoggedIn)
-
+    
     function onLogin(user) {
         setIsLoggedIn(true)
         setUser(user)

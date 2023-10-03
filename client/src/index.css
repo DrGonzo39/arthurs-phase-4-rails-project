@@ -7,11 +7,117 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.App {
+  background-image: url(https://paintingandframe.com/art-imgs/pablo_picasso/the_old_guitarist_c_1903-14523.jpg);
+}
+
 #album_card {
   width: 80%;
   margin:auto;
-  background-color: blue;
+  background-color: lightsteelblue;
+  border: 2px lightsalmon; 
+  border-radius: 4px;
+  border-style: dotted;
+  display: block;
+}
 
+#album_img {
+  width: 40%;
+  margin:auto;
+  display: block;
+}
+
+#album_title {
+  text-align: center;
+  font-size: 75px;
+  font-family: Papyrus;
+  color: brown;
+}
+
+#album_artist {
+  text-align: center;
+  font-size: 40px;
+  font-family: Papyrus;
+  color: coral;
+}
+
+#album_genre {
+  text-align: left;
+  font-family: Brush Script M7;
+  font-size: 25px;
+}
+
+#tracks_header {
+  font-family: serif;
+  font-size: 15px;
+}
+
+#album_tracks {
+  font-family: Antiqua;
+  font-size: 25px;
+  color: crimson;
+}
+
+#content {
+  width: 35%;
+  height: 50px;
+  margin: 8px; 
+}
+
+#new_review_button {
+  width: 35%;
+  height: 50px;
+  margin: 8px;
+  color:darkmagenta
+}
+
+#album_form_text {
+  text-align: center;
+  font-size: 40px;
+  font-family: fantasy;
+  color: purple;
+}
+
+#input_title {
+  color: crimson;
+  font-family: fantasy;
+  font-size: 25px;
+}
+
+#input_artist {
+  color: crimson;
+  font-family: fantasy;
+  font-size: 25px;
+}
+
+#input_genre {
+  color: crimson;
+  font-family: fantasy;
+  font-size: 25px;
+}
+
+#input_tracks {
+  color: crimson;
+  font-family: fantasy;
+  font-size: 25px;
+}
+
+#input_cover_image {
+  color: crimson;
+  font-family: fantasy;
+  font-size: 25px;
+}
+
+#user_name_text {
+  font-size: 40px;
+  font-family: Papyrus;
+  color: rgba(255, 89, 80, 0.651);
+}
+
+#new_album_submit {
+  width: 15%;
+  height: 40px;
+  margin: 8px;
 }
 
 code {

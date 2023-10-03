@@ -31,8 +31,8 @@ function ReviewCard({ review, onUpdateReview, onDeleteReview }) {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div >
+            <form id="review_content" onSubmit={handleSubmit}>
             <input
             type="text"
             id="content"

@@ -6,6 +6,7 @@ function AlbumCard({ album, onUpdateReview, onAddReview, onDeleteReview  }) {
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([])
     const { user } = useContext(UserContext);
+    const { title, artist, cover_image, genre, tracks } = album
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -30,10 +31,12 @@ function AlbumCard({ album, onUpdateReview, onAddReview, onDeleteReview  }) {
 
     return (
         <div id="album_card">
-        <h1>{album.title}</h1>
-        <img alt="album" src={album.cover_image}/>
-        <h3>{album.genre}</h3>
-        <p>{album.tracks}</p>
+        <h1 id="album_title">{title}</h1>
+        <h2 id="album_artist">By: {artist}</h2>
+        <img src={cover_image} alt="album" id="album_img"/>
+        <h3 id="album_genre">{genre}</h3>
+        <h4 id="tracks_header">Best Tracks:</h4>
+        <p id="album_tracks">{tracks}</p>
         <h1>Review this album!</h1>
         <form onSubmit={handleSubmit}>
         <input
@@ -42,7 +45,7 @@ function AlbumCard({ album, onUpdateReview, onAddReview, onDeleteReview  }) {
         value={content}
         onChange={(e) => setContent(e.target.value)}
         />
-        <button type="submit">Submit Your Review!</button>
+        <button id="new_review_button"type="submit">Submit Your Review!</button>
         </form>
         <h2>
             {album.reviews.map((review) => {
