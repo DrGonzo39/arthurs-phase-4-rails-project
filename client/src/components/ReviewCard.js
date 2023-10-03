@@ -31,7 +31,7 @@ function ReviewCard({ review, onUpdateReview, onDeleteReview }) {
     }
 
     return (
-        <>
+        <div>
             <form onSubmit={handleSubmit}>
             <input
             type="text"
@@ -47,7 +47,7 @@ function ReviewCard({ review, onUpdateReview, onDeleteReview }) {
             <li key={err}>{err}</li>
             ))}
             </ul> 
-        </>
+        </div>
     )
 }
 

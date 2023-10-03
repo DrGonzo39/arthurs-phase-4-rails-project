@@ -12,7 +12,7 @@ class AlbumsController < ApplicationController
     end
 
     def create
-        album = @current_user.albums.create!(album_params)
+        album = Album.create!(album_params)
         render json: album, status: :created 
     end
 

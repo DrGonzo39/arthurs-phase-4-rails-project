@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ReviewCard from "./ReviewCard";
+import { UserContext } from "../context/user";
 
 function AlbumCard({ album, onUpdateReview, onAddReview, onDeleteReview  }) {
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([])
+    const { user } = useContext(UserContext);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -27,7 +29,7 @@ function AlbumCard({ album, onUpdateReview, onAddReview, onDeleteReview  }) {
     }
 
     return (
-        <>
+        <div id="album_card">
         <h1>{album.title}</h1>
         <img alt="album" src={album.cover_image}/>
         <h3>{album.genre}</h3>
@@ -44,7 +46,11 @@ function AlbumCard({ album, onUpdateReview, onAddReview, onDeleteReview  }) {
         </form>
         <h2>
             {album.reviews.map((review) => {
-              return <ReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview}/>
+              if (user.id === review.user_id){
+                return <ReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview}/>
+              }else{
+                return  <p>{review.content}</p>     
+              }
             })}
         </h2>
         <ul>
@@ -52,7 +58,7 @@ function AlbumCard({ album, onUpdateReview, onAddReview, onDeleteReview  }) {
         <li key={err}>{err}</li>
         ))}
         </ul> 
-        </>
+        </div>
     )
 }
 

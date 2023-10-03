@@ -7,6 +7,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#album_card {
+  width: 80%;
+  margin:auto;
+  background-color: blue;
+
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

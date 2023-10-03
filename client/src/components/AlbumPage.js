@@ -50,12 +50,10 @@ function AlbumPage() {
         const updatedReviews = albumToUpdate.reviews.filter((deletedReview) => deletedReview.id !== review.id)
         albumToUpdate.reviews = updatedReviews;
         handleUpdateAlbum(albumToUpdate)
-        const reviewToUpdateIndex = albums.findIndex((album) => album.id === review.album_id)
-        albums[reviewToUpdateIndex].reviews = updatedReviews;
-
+        const updatedUserAlbums = user.albums.filter((album) => album.id !== review.album_id)
         setUser((prevState) => ({
             ...prevState,
-            albums: albums
+            albums: updatedUserAlbums
         }))
     }
 
