@@ -10,10 +10,10 @@ function Home() {
     if (isLoggedIn) { 
         return (
             <>
-            <h1>My Reviewed Albums</h1>
+            <h1 id="home_header">My Reviewed Albums</h1>
             <h2>
             {user.albums.map((album) => (
-                <p key={album.id}>{album.title}</p>
+                <p key={album.id} id="user_album_text">{album.title}</p>
             ))}
             </h2>
             </>
