@@ -1,5 +1,4 @@
 class AlbumsController < ApplicationController
-    # skip_before_action? create?
 
     def index 
         albums = Album.all 
