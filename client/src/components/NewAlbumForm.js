@@ -30,6 +30,7 @@ function NewAlbumForm({ onAddAlbum }) {
               setArtist("")
               setGenre("")
               setTracks("")
+              setCoverImage("")
             } else {
               r.json().then((err) => setErrors(err.errors));
             }
